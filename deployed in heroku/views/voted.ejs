@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="https://image.flaticon.com/icons/png/512/1533/1533878.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function myFunction(element) {
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val($(element).text().trim()).select();
+      document.execCommand("copy");
+      $temp.remove();
+
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/">De-Mocracy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/result">Result</a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/verification">Verify</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </nav>
+
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong> You are now logged in
+  </div>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Access Denied</h1>      
+    <p class="text-center">Dear Citizen,  you have already casted your vote. </p>
+    <p class="text-center" >Your Hash ID : </p>
+   <div class="row text-center">
+    <div class="container">
+    <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td style="font-size:2vw"><span id="copy"><%= mailHash %></span></td>
+   </tr>
+    </table>
+    </div>
+    </div>
+   </div>
+<div class="col">
+      <div class="text-center">
+        <a type="button" class="btn btn-success" href="https://ropsten.etherscan.io/tx/<%=mailHash%>">Verify Transaction</a>
+      </div>
+
+    </br>
+    <!-- <p class="text-center">You can verify your Transaction at  https://ropsten.etherscan.io/tx/<%=mailHash%></p> -->
+    
+  </div>    
+</div>
+</div>
+<div class="row text-center">
+    
+    <div class="col">
+        <button type="button" class="btn btn-warning" onclick="myFunction('#copy')">Copy hash</button>
+        <a type="button" class="btn btn-warning" href="/dashboard/downloadFile">Download Transaction Reciept</a>
+    </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+    <footer class="page-footer font-small special-color-dark pt-4 text-center"style="font-size:2vw" >© Copyright 2020 </br>Team Blockbusters
+      <p class="page-footer font-small text-center"style="font-size:2vw" >. ASHER . DEBIN . JOAN . UDAY .</p>
+    </footer>
+
+</body>
+</html>

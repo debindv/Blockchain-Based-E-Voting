@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="https://image.flaticon.com/icons/png/512/1533/1533878.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/">De-Mocracy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav ml-auto ">
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </nav>
+<div class="container-fluid" >
+
+    <div class="row">
+      <div class="col-sm-4 text-white bg-primary">
+      </br>
+        <h3 class="text-center font-weight-normal">Add Candidate</h3>
+        <div class="container">
+        </br>
+          <form action="/admin/address" method="post">
+            <div class="form-group">
+              <label for="email">Name of the Candidate:*</label>
+              <input type="text" class="form-control" name="cname" placeholder="Candidate Name" id="cname">
+              <label for="email">Enter contract address:*</label>
+              <input type="text" class="form-control" name="address" placeholder="Eg: 0x74d2C209EB805411315BC025bF0f1d596c2a6b78" id="address">
+            </div>
+            <button type="submit"  class="btn btn-light">Submit</button>
+          </form>
+        </div>
+          
+      </div>
+      <div class="col-sm-4 text-white bg-warning">
+      </br>
+        <h3 class="text-center font-weight-normal">Coinbase Updation</h3>
+        <div class="container">
+        </br>
+          <form action="/admin/coinbase" method="post">
+            <div class="form-group">
+              <label for="email">Enter current coinbase address:*</label>
+              <input type="text" class="form-control" name="ccoinbase" placeholder="Eg: 0x40f4DE94adE960620c00474C12752a5fA49CB78b" id="ccoinbase">
+              <label for="email">Enter current Private Key:*</label>
+              <input type="text" class="form-control" name="cprivatekey" placeholder="Eg: 0x23eb4fcdaf0e777d818e96f8e1ffea034dfd881f24ed745db52b" id="cprivatekey">
+              <label for="email">Enter new coinbase address:*</label>
+              <input type="text" class="form-control" name="coinbase" placeholder="Eg: 0x40f4DE94adE960620c00474C12752a5fA49CB78b" id="coinbase">
+              <label for="email">Enter new Private Key:*</label>
+              <input type="text" class="form-control" name="privatekey" placeholder="Eg: 0x23eb4fcdaf0e777d818e96f8e1ffea034dfd881f24ed745db52b" id="privatekey">
+            </div>
+            <button type="submit"  class="btn btn-light">Submit</button>
+          </form>
+        </br>
+        </div>
+        
+      </div>
+      <div class="col-sm-4 text-white bg-danger">
+      </br>
+        <h3 class="text-center font-weight-normal">Voters List</h3>
+    </br>
+        <div class="container">
+          <h5>No. of people who voted = <%=vcount%></h5>
+        <h5>Total no. of people = <%=ucount%></h5>
+      </br>
+    </br>
+        <a type="button" class="btn btn-light" href="/admin/votedList"> See the complete list </a>
+        </div>
+      </div>
+    </div>
+    <% include ./messages %>  
+</br>
+      <div class="col-sm-12 text-white bg-secondary">
+      </br>
+        <h3 class="text-center font-weight-normal">Register in Aadhar database</h3>
+        <div class="text-center">
+            <a type="button" class="btn btn-light" href="/admin/register">Register</a>
+        </div>
+      </br>
+      </div>
+      <div class="col-sm-12 text-white bg-info">
+      </br>
+        <h3 class="text-center font-weight-normal">Download Complete Transaction Reciept</h3>
+        <div class="text-center">
+            <a type="button" class="btn btn-light" href="/admin/downloadFile">Download</a>
+        </div>
+      </br>
+      </div>
+      <div class="col-sm-12 text-white bg-dark">
+      </br>
+        <h3 class="text-center font-weight-normal">Coinbase Balance :</h3>
+        <div class="container">
+        </br>
+          <div class="text-center">
+          <h5><%=balance%> wei</h5>
+          </div>
+       </div>
+      </br>
+      </div>
+    </div>
+
+
+
+
+
+    
+
+</body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<footer><p class="display-3 text-center" style="font-size:2vw">© Copyright 2020 </br>Team Blockbusters</p>
+  <p class="display-3 text-center" style="font-size:2vw">. ASHER . DEBIN . JOAN . UDAY .</p>
+</footer>
+</html>
