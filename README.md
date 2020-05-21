@@ -42,7 +42,7 @@ npm i -g ganache-cli
 ## Setting up Blockchain environment
 
 
-Run ganache with this command
+Run ganache with this command in the terminal
 
 ```
 ganache-cli
@@ -56,7 +56,7 @@ Go to  remix.ethereum.org and paste the smart contract (Election.sol)
 Then compile it and copy the ABI of the smart contract and paste it in the contractABI field in app.js.
 Before deploying it, make sure the 'Environment' field has 'Web3 Provider'.
 
-Once its deployed, copy the contract address and paste it in app.js next to the variable contractAddress and copy the account address and paste it next to the variable coinbase
+Once its deployed, copy the contract address and paste it in js file contractAddress in folder contract and copy the account address and paste it next to the variable coinbase in app.js
 
 
 ## Deployment
