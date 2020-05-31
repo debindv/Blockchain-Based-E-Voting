@@ -1,4 +1,4 @@
-const contractAbi =[
+const contractAbi = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",

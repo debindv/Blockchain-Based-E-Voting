@@ -25,13 +25,21 @@ module.exports = function(passport) {
           return done(null, false);
         }
 
+
+
         // Match password
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
+          if(!user.verified){
+            return done(null, false,{ message: 'Email not verified' });
+          }
           if (isMatch) {
+            user.emailVerificationToken = undefined; 
+            user.emailTokenExpiry = undefined;
+            user.save();
             return done(null, user);
           } else {
-            return done(null, false,{ message: 'Password incorrect' });
+            return done(null, false,{ message: 'Incorrect login credentials' });
           }
         });
       });

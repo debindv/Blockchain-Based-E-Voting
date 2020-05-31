@@ -5,17 +5,25 @@ const session = require('express-session');
 var Web3 = require("web3");
 const flash = require('connect-flash');
 const Email = require('./models/Email');
+const Aadhar = require('./models/Aadhar');
 var helmet = require('helmet');
 const truffleConfig = require('./truffle-config.js');
 const hasVoted = require('./models/hasVoted');
-const admin = require('./models/admin');
+const User = require('./models/User');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
+
+
 coinbase = '0x40f4DE94adE960620c00474C12752a5fA49CB78b';
 privateKey = '0x23eb4fcdaf0e777d818e96f8e1ffea034dfd881f24ed745db52b5f4c86a3b765';
-//coinbase = '0x40f4DE94adE960620c00474C12752a5fA49CB78b';
+
+
 const app = express();
+
+//Helmet for security
 app.use(helmet());
+
+//Set view engine as EJS
 app.set('view engine','ejs');
 
 // web3.eth.getCoinbase(function (err, account) {
@@ -24,9 +32,8 @@ app.set('view engine','ejs');
 //     console.log(`up ${coinbase}`);
 // 	}
 // });
-
-contractAddress = "0x978841A92A077515f0742eBE691E063fb76D15FE";
-//smartContractHash = 'https://ropsten.etherscan.io/tx/0xb92e3efc179f72b702332486ab7cd9f8eaf879e36643ec1d442e412645eeb5cf'
+// contractAddress = '0x978841A92A077515f0742eBE691E063fb76D15FE';
+contractAddress = "0x25169DE3749b5e95F3075df90A7968BABAe045d1";
 const contractAbi = require('./contracts/contractAbi');
 
 Provider = truffleConfig.networks.rinkeby.provider()
@@ -56,20 +63,19 @@ mongoose
   .connect(
     db,
     { useNewUrlParser: true,
-      useUnifiedTopology: true }
+      useUnifiedTopology: true,
+      useFindAndModify:false }
   )
   .then(() => {
     console.log('MongoDB Connected');
     fs.writeFile('./transactionreciepts/AllTransaction.txt', `ELECTION CONDUCTED ON ${new Date()}\n\n`,(err) => {
       if(err) throw err;
     })
-    // Email.deleteMany({}, () => console.log('Verification table cleared'));
-    // hasVoted.deleteMany({}, () => console.log('Has Voted Table cleared'));
+
+    // Aadhar.deleteMany({}, () => console.log('Aadhar Table cleared'));
+    // User.deleteMany({}, () => console.log('User table cleared'));
   })
   .catch(err => console.log(err));
-
-
-  //
 
 
 // Express body parser
@@ -105,16 +111,14 @@ app.use(function(req, res, next) {
 app.use(express.static('front-end'));
 
 // Routes
-
 app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
 app.use('/dashboard', require('./routes/dashboard'));
 app.use('/result', require('./routes/result'));
 app.use('/logout', require('./routes/logout'));
 app.use('/verification', require('./routes/verification'));
-
+app.use('/forgot',require('./routes/forgot'));
+app.use('/reset',require('./routes/reset'));
 app.use('/admin', require('./routes/admin'));
 
 module.exports = app;
-
-

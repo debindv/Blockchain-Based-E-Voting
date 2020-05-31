@@ -12,7 +12,15 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  verified: {
+    type: Boolean,
+    default: false
+  },
+  emailVerificationToken: String,
+  emailTokenExpiry: Date,
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 const User = mongoose.model('User', UserSchema);

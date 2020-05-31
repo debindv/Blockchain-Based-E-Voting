@@ -21,6 +21,9 @@
       alert("Copied the text: " + copyText.value);
     }
   </script>
+  <script type="text/javascript" async
+  src="//l.getsitecontrol.com/94m3l017.js">
+</script>
 </head>
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -70,9 +73,11 @@
     </div>
    </div>
 <div class="col">
-      <div class="text-center">
-        <a type="button" class="btn btn-success" href="https://ropsten.etherscan.io/tx/<%=mailHash%>">Verify Transaction</a>
-      </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-success" onclick="myFunction('#copy')">Copy hash</button>
+    <a type="button" class="btn btn-success" href="/verification">Go to Verification Page -></a>
+  </div>
+      
 
     </br>
     <!-- <p class="text-center">You can verify your Transaction at  https://ropsten.etherscan.io/tx/<%=mailHash%></p> -->
@@ -83,13 +88,16 @@
 <div class="row text-center">
     
     <div class="col">
-        <button type="button" class="btn btn-warning" onclick="myFunction('#copy')">Copy hash</button>
-        <a type="button" class="btn btn-warning" href="/dashboard/downloadFile">Download Transaction Reciept</a>
+      <a type="button" class="btn btn-info" href="https://ropsten.etherscan.io/tx/<%=mailHash%>" target="_blank">Verify your Block in Blockchain Network</a>
+      <a type="button" class="btn btn-info" href="/dashboard/downloadFile">Download Transaction Reciept</a>
     </div>
 </div>
 </br>
 </br>
 </br>
+<!-- <div class="text-center">
+  
+</div> -->
 </br>
 </br>
     <footer class="page-footer font-small special-color-dark pt-4 text-center"style="font-size:2vw" >© Copyright 2020 </br>Team Blockbusters

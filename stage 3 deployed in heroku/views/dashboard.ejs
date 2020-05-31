@@ -100,14 +100,22 @@
  
     <div class="container">
       <div class="row-fluid">
-        <div class="jumbotron text-center jumbotron-fluid">
-          
-            <h1> Election 2020</h1>      
-            <p>Welcome User, this is your dashboard where you may cast your votes. Don't forget to wash your hands</p>
-          
-           
-          
-        </div>
+        <div class="jumbotron text-center">
+          <!-- jumbotron-fluid -->
+            <h1>Mock Election 2020</h1>      
+            <p>Welcome to this mock election conducted by Team Blockbusters as part of final year B.Tech Project</p> </div>
+            <div class="jumbotron text-left">
+            <p><b>INSTRUCTIONS:</b></p>
+            <p>  • Hit the submit button after choosing your answer.</p> 
+            <p>  • After hitting the submit vote button, please be patient as the transaction  might take a few minutes to be validated.</p>
+            <p>  • After voting, a hash will be displayed which you can copy and go to the verification page to ensure that your vote went to your choice.</p>              
+            <p>  • If you encounter an error message  "<i>Application error</i>", don't worry your vote will be casted. This is an issue of Heroku's free hosting. You can verify this by trying to login again.</p>
+            <p>  • Loading the result page also may take some time.</p>
+            </br>
+            <div class="text-center">
+            <p>  For any further queries or issues please contact Team Blockbusters.</p><p>Asher, Debin, Joan, Uday</p></div>
+          </div>
+        
       </div>
     </div>
     
@@ -119,13 +127,14 @@
         <div class="col-sm ">
           <div class="container bg-light ">
             <h3>Voting Booth</h3>
-            <h6>Choose your representative</h6>
+          </br>
+            <h6> Question: Which among these would pick as your favorite IV spot ?</h6>
             <div class="dropdown">
-              <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" style="margin-top: 25px; margin-bottom: 25px;">Candidate List</button>
+              <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" style="margin-top: 25px; margin-bottom: 25px;">IV Spots List</button>
               <div id="demo" class="collapse">
                   <form id="candidateSelect" action="/dashboard" method="post">
                       <select class="custom-select md" data-style="btn-info" name="selectpicker">
-                          <optgroup label="Select Candidate">
+                          <optgroup label="Select your favorite IV spot">
                   
                               <% for(var i = 0 ; i < cid.length ; i++) { %>
                               

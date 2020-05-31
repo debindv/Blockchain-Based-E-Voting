@@ -87,14 +87,52 @@
     </div>
     <% include ./messages %>  
 </br>
-      <div class="col-sm-12 text-white bg-secondary">
+<div class="row">
+  <div class="col-sm-4 text-white bg-success">
+  </br>
+    <h3 class="text-center font-weight-normal">Remove User</h3>
+    <div class="container">
+
+    </br>
+      <form action="/admin/removeUser" method="post">
+        <div class="form-group">
+          <label for="email">Email of User:*</label>
+          <input type="email" class="form-control" name="email" placeholder="Email address" id="email">
+        </div>
+        <button type="submit"  class="btn btn-light">Remove</button>
+      </form>
+    </br>
+  </br>
+    </div>
+   </div>
+   <div class="col-sm-4 text-white bg-info">
+  </br>
+    <h3 class="text-center font-weight-normal">Complete Registered User</h3>
+    <div class="container">
+  </br>
+</br>
+<div class="text-center">
+    <a type="button" class="btn btn-light" href="/admin/completeList"> See the complete list </a>
+  </div>
+    </div>
+  </br>
+</br>
+   </div>
+  
+</br>
+      <div class="col-sm-4 text-white bg-secondary">
       </br>
         <h3 class="text-center font-weight-normal">Register in Aadhar database</h3>
+    </br>
+  </br>
         <div class="text-center">
             <a type="button" class="btn btn-light" href="/admin/register">Register</a>
         </div>
       </br>
       </div>
+    </div>
+    </div>
+  </br>
       <div class="col-sm-12 text-white bg-info">
       </br>
         <h3 class="text-center font-weight-normal">Download Complete Transaction Reciept</h3>
@@ -114,6 +152,21 @@
        </div>
       </br>
       </div>
+      
+      <div class="col-sm-12 text-white bg-secondary">
+      </br>
+        <h3 class="text-center font-weight-normal">Clear Database</h3>
+        <div class="container">
+        </br>
+        <div class="text-center">
+          <a type="button" class="btn btn-light" href="/admin/clearverify">Verification Table</a>
+          <a type="button" class="btn btn-light" href="/admin/clearhasvoted">Voted Peoples Table</a>
+      </div>
+       </div>
+      </br>
+      </div>
+      
+      </br>
     </div>
 
 

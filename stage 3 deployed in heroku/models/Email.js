@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 
 const EmailSchema = new mongoose.Schema({
-  
+  mHash:{
+    type: String,
+    required: true
+  },
   candidateid:{
       type: String,
       required: true
