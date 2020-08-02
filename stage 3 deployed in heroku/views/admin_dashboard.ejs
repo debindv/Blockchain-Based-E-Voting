@@ -72,18 +72,26 @@
         </div>
         
       </div>
-      <div class="col-sm-4 text-white bg-danger">
+      <div class="col-sm-4 text-white bg-primary">
       </br>
-        <h3 class="text-center font-weight-normal">Voters List</h3>
+        <h3 class="text-center font-weight-normal">Add Question</h3>
     </br>
-        <div class="container">
-          <h5>No. of people who voted = <%=vcount%></h5>
-        <h5>Total no. of people = <%=ucount%></h5>
+        
+          <form action="/admin/addQuestion" method="post">
+            <div class="form-group">
+              <label for="question">Voting Question*</label>
+            </br>
+              <input type="text" class="form-control" name="question" placeholder="Enter Question" id="question">
+              <label for="question">Enter privatekey*</label>
+            </br>
+              <input type="text" class="form-control" name="privatekey" placeholder="Eg: 0x23eb4fcdaf0e777d818e96f8e1ffea034dfd881f24ed745db52b" id="privatekey">
+            </div>
+            <button type="submit"  class="btn btn-light">Add</button>
+          </form>
+        
       </br>
-    </br>
-        <a type="button" class="btn btn-light" href="/admin/votedList"> See the complete list </a>
-        </div>
       </div>
+
     </div>
     <% include ./messages %>  
 </br>
@@ -133,6 +141,22 @@
     </div>
     </div>
   </br>
+  <div class="col-sm-12 text-white bg-danger">
+  </br>
+    <h3 class="text-center font-weight-normal">Voters List</h3>
+</br>
+<div class="text-center">
+    <div class="container">
+      <h5>No. of people who voted = <%=vcount%></h5>
+    <h5>Total no. of people = <%=ucount%></h5>
+  </br>
+</br>
+    <a type="button" class="btn btn-light" href="/admin/votedList"> See the complete list </a>
+    </div>
+  </br>
+</br>
+  </div>
+  </div>
       <div class="col-sm-12 text-white bg-info">
       </br>
         <h3 class="text-center font-weight-normal">Download Complete Transaction Reciept</h3>
@@ -141,6 +165,7 @@
         </div>
       </br>
       </div>
+      
       <div class="col-sm-12 text-white bg-dark">
       </br>
         <h3 class="text-center font-weight-normal">Coinbase Balance :</h3>

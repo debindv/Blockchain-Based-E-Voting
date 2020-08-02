@@ -202,7 +202,7 @@ router.post('/clearverify', (req,res) => {
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) throw err;
         if (isMatch) {
-          //Email.deleteMany({}, () => console.log('Verification table cleared'));
+          Email.deleteMany({}, () => console.log('Verification table cleared'));
           req.flash('success_msg', 'Succesfully Cleared Verification Database');
           res.redirect('/admin/dashboard');
         } else {
@@ -236,8 +236,8 @@ router.post('/clearhasvoted', (req,res) => {
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
           if (isMatch) {
-            //hasVoted.deleteMany({}, () => console.log('Has Voted Table cleared'));
-            req.flash('success_msg', 'Succesfully Cleared Verification Database');
+            hasVoted.deleteMany({}, () => console.log('Has Voted Table cleared'));
+            req.flash('success_msg', 'Succesfully Cleared HasVoted Database');
             res.redirect('/admin/dashboard');
           } else {
             req.flash('error', 'Incorrect Password');
@@ -278,7 +278,6 @@ router.post('/removeUser', (req,res) => {
   });
 
 //COMPLETE USERS LIST
-
 router.get('/completeList',ensureAuthenticated, (req,res) => {
   User.find( {}, (err, data) => {
     if (err) throw err;
@@ -289,7 +288,55 @@ router.get('/completeList',ensureAuthenticated, (req,res) => {
 
 });
 
-
+//ADD QUESTION
+var question;
+router.post('/addQuestion', (req,res) => {
+    var ques = req.body.question;
+    var ckey = req.body.privatekey;
+    if (ckey!= privateKey || !ques){
+      req.flash('error','Not a valid entry');
+      res.redirect('/admin/dashboard');
+    }
+    else{
+      Election.methods.getQuestion()
+        .call({ from: coinbase }).then((q) => {
+        var question = q;
+        console.log(question);
+        if(question === "") {
+          Election.methods.setQuestion(ques)
+          .send({ from: coinbase, gas:6000000, gasPrice: web3.utils.toWei('0.00000009', 'ether')}).then((val) => {
+          console.log(val);
+          })
+          req.flash('success_msg', `Successfully Added Question`);
+          res.redirect('/admin/dashboard');
+        }
+        else {
+          req.flash('error', `Question Exists`);
+          res.redirect('/admin/dashboard');
+        } 
+      })
+    //   Election.methods.setQuestion(ques)
+    //   .send({ from: coinbase, gas:6000000, gasPrice: web3.utils.toWei('0.00000009', 'ether')}).then((val) => {
+    //   console.log(val);
+    //   //RENDER THE SUCESS PAGE
+    //   if(question == null )
+    //   {
+    //     req.flash('success_msg', `Successfully Updated Question`);
+    //     res.redirect('/admin/dashboard');
+    //     question = ques;
+    //     console.log(ques);
+    //   }
+    //   else
+    //   {
+    //     req.flash('success_msg', `Question cannot be updated`);
+    //     res.redirect('/admin/dashboard');
+    //   }  
+    // })
+  }
+    /*console.log('Question cannot be changed');
+    req.flash('success_msg', `Question cannot be added`);
+    res.redirect('/admin/dashboard');*/  
+});
 
 
 

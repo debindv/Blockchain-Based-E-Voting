@@ -8,6 +8,10 @@ contract Election {
         string name;
         uint voteCount;
     }
+    string Question; //Question
+    address EventAdmin;
+    uint256 constant NULL = 0;
+    string Qst;
     //store accounts that have voted
     mapping(address => bool) public voters;
     mapping (string => bool) public voted;
@@ -17,14 +21,30 @@ contract Election {
     //store candidates Count
     uint public candidatesCount;
     string public candidate;
+    modifier onlyOwner {
+        require(msg.sender == EventAdmin,'No access');
+        _;
+    }
+
     //constructor
     constructor () public {
         addCandidate("NOTA");
+        EventAdmin = msg.sender;
+    }
+    function setQuestion(string memory theQuestion) public{
+        if(bytes(Qst).length == 0 )
+        {
+            Question = theQuestion;
+            Qst = Question;
+        }
     }
     function getCandidate (uint _candidateId) public view returns (uint _id, string memory _name, uint _voteCount) {
         _id = candidates[_candidateId].id;
         _name = candidates[_candidateId].name;
         _voteCount = candidates[_candidateId].voteCount;
+    }
+    function getQuestion() public view returns(string memory) {
+        return Question;
     }
     function addCandidate (string memory _name) public { // private because not too be accessible by public interface of contract
         candidatesCount ++;

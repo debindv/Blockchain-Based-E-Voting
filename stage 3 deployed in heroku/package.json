@@ -29,6 +29,7 @@
     "nodemailer": "^6.4.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "twilio": "^3.45.0",
     "web3": "^1.0.0-beta.37",
     "xoauth2": "^1.2.0"
   }

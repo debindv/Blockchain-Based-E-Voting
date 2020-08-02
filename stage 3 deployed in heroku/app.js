@@ -33,7 +33,7 @@ app.set('view engine','ejs');
 // 	}
 // });
 // contractAddress = '0x978841A92A077515f0742eBE691E063fb76D15FE';
-contractAddress = "0x25169DE3749b5e95F3075df90A7968BABAe045d1";
+contractAddress = "0xC295EFb80c0669E6b5F62cdc5C3189c21b9e8b6c";
 const contractAbi = require('./contracts/contractAbi');
 
 Provider = truffleConfig.networks.rinkeby.provider()
@@ -68,9 +68,14 @@ mongoose
   )
   .then(() => {
     console.log('MongoDB Connected');
-    fs.writeFile('./transactionreciepts/AllTransaction.txt', `ELECTION CONDUCTED ON ${new Date()}\n\n`,(err) => {
-      if(err) throw err;
-    })
+    fs.access('./transactionreciepts/AllTransaction.txt', fs.F_OK, (err) => {
+      if (err) {
+        fs.writeFile('./transactionreciepts/AllTransaction.txt', `ELECTION CONDUCTED ON ${new Date()}\n\n`,(err) => {
+          if(err) throw err;
+        })
+      }
+    });
+    
 
     // Aadhar.deleteMany({}, () => console.log('Aadhar Table cleared'));
     // User.deleteMany({}, () => console.log('User table cleared'));

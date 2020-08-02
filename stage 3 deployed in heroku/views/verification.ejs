@@ -119,11 +119,13 @@
                <tr>
                    <th>Hash ID</th>
                    <th>Candidate ID</th>
+                   <th>Verification Link</th>
                </tr>
             <% data.forEach(function (user) { %>
                 <tr>
                      <td><%= user.transactionHash %></td>
                      <td><%= user.candidateid %></td>
+                     <td><a type="button" class="btn btn-info" href="https://ropsten.etherscan.io/tx/<%= user.transactionHash %>" target="_blank">Verify your Block in Blockchain Network</a></td>
                 </tr>
          <% }) %>
            </table>
@@ -139,7 +141,7 @@
 <p class="text-center" >SMART CONTRACT VERIFICATION :</p>
 <div class="row text-center">
             <div class="col">
-              <a type="button" class="btn btn-danger" href="https://ropsten.etherscan.io/tx/0x3567d09aa0a9d15cc469d558b2d8e808086d30c706d390541234a663d1e8f00c" target="_blank">Verify Smart Contract</a>
+              <a type="button" class="btn btn-danger" href="https://ropsten.etherscan.io/tx/0xa82125eb9a24ba240c8de1cf00c04643e2339044bb56688e2b1fee54f0ddf5ea" target="_blank">Verify Smart Contract</a>
             </div>
             </div>
 </br>
