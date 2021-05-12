@@ -26,7 +26,7 @@
     "ganache-cli": "^6.4.3",
     "helmet": "^3.22.0",
     "mongoose": "^5.7.5",
-    "nodemailer": "^6.4.8",
+    "nodemailer": "^6.4.16",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "twilio": "^3.45.0",
